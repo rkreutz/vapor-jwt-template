@@ -3,6 +3,7 @@
 extension Droplet {
     public func setup() throws {
         try setupRoutes()
-        // Do any additional droplet setup
+        
+        User.cryptoHasher = try self.config.resolveHash() as? CryptoHasher
     }
 }

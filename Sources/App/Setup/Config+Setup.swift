@@ -1,4 +1,8 @@
 import FluentProvider
+import AuthProvider
+import JWTProvider
+import MongoProvider
+import Crypto
 
 extension Config {
     public func setup() throws {
@@ -13,11 +17,14 @@ extension Config {
     /// Configure providers
     private func setupProviders() throws {
         try addProvider(FluentProvider.Provider.self)
+        try addProvider(AuthProvider.Provider.self)
+        try addProvider(JWTProvider.Provider.self)
+        try addProvider(MongoProvider.Provider.self)
     }
     
     /// Add all models that should have their
     /// schemas prepared before the app boots
     private func setupPreparations() throws {
-        preparations.append(Post.self)
+        preparations.append(User.self)
     }
 }
