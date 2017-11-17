@@ -12,6 +12,7 @@ extension Config {
 
         try setupProviders()
         try setupPreparations()
+        try addConfigurables()
     }
     
     /// Configure providers
@@ -26,5 +27,9 @@ extension Config {
     /// schemas prepared before the app boots
     private func setupPreparations() throws {
         preparations.append(User.self)
+    }
+    
+    private func addConfigurables() throws {
+        self.addConfigurable(command: GenerateSignerCommand.init, name: "gen-signer")
     }
 }
