@@ -46,10 +46,17 @@ extension Droplet {
         
         jwt.get("super-secret-route") { req in
             let user = try req.user()
-            let jwt = Token(subjectId: user.id?.string ?? "", audience: Audience.admin.rawValue, issueDate: Date())
-            guard let signer = self.signers?["key"] else { throw Abort.serverError }
+            let token = Token(subjectId: user.id?.string ?? "", audience: Audience.admin.rawValue, issueDate: Date())
+            
+            guard let signers = self.signers else { throw Abort.serverError }
+            let signerKeys = signers.map({ $0.key })
+            let signerKey = signerKeys[Int(arc4random()) % signerKeys.count]
+            guard let signer = signers[signerKey] else { throw Abort.serverError }
+            
+            let jwt = try JWT(additionalHeaders: ["kid": .string(signerKey)], payload: try token.makeJSON(), signer: signer)
+            
             var json = JSON()
-            try json.set("token", try JWT(additionalHeaders: ["kid": "key"], payload: try jwt.makeJSON(), signer: signer).createToken())
+            try json.set("token", jwt.createToken())
             return json
         }
     }
