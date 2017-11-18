@@ -32,6 +32,8 @@ class UserController {
                 throw ValidatorError.failure(type: "password|passwordConfirm", reason: "Not confirmed or empty")
         }
         
+        guard user.id?.string?.passes(EmailValidator()) == true else { throw ValidatorError.failure(type: "email", reason: "Not valid") }
+        
         guard try User.makeQuery().find(user.id) == nil else {
             throw Abort.init(.badRequest, reason: "User already exists")
         }
