@@ -46,7 +46,7 @@ class UserController {
         let user = try request.user()
         let token = Token(user: user)
         
-        guard let signers = self.droplet.signers else { throw Abort.serverError }
+        let signers = try self.droplet.assertSigners()
         let signerKeys = signers.map({ $0.key })
         let signerKey = signerKeys[Int(arc4random()) % signerKeys.count]
         guard let signer = signers[signerKey] else { throw Abort.serverError }
