@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "BSON",
-        "repositoryURL": "https://github.com/OpenKitten/BSON.git",
-        "state": {
-          "branch": null,
-          "revision": "eb4ff0def92e8a74aa44f9f927ebae5bc3a05f57",
-          "version": "5.1.5"
-        }
-      },
-      {
         "package": "Bits",
         "repositoryURL": "https://github.com/vapor/bits.git",
         "state": {
@@ -47,12 +38,12 @@
         }
       },
       {
-        "package": "CTLS",
-        "repositoryURL": "https://github.com/vapor/ctls.git",
+        "package": "BSON",
+        "repositoryURL": "https://github.com/OpenKitten/BSON.git",
         "state": {
           "branch": null,
-          "revision": "fddec6a4643d6e85b6bb6dc54b1b5cdbabd395d2",
-          "version": "1.1.2"
+          "revision": "eb4ff0def92e8a74aa44f9f927ebae5bc3a05f57",
+          "version": "5.1.5"
         }
       },
       {
@@ -98,6 +89,15 @@
           "branch": null,
           "revision": "bf7a4d6dbd6f4bbd96ae620101239446d2cdd3f9",
           "version": "0.2.3"
+        }
+      },
+      {
+        "package": "CTLS",
+        "repositoryURL": "https://github.com/vapor/ctls.git",
+        "state": {
+          "branch": null,
+          "revision": "fddec6a4643d6e85b6bb6dc54b1b5cdbabd395d2",
+          "version": "1.1.2"
         }
       },
       {
@@ -173,6 +173,15 @@
         }
       },
       {
+        "package": "KittenCTLS",
+        "repositoryURL": "https://github.com/OpenKitten/KittenCTLS.git",
+        "state": {
+          "branch": null,
+          "revision": "be8c42f22975e8033c6f342f42b8999407672bb3",
+          "version": "1.0.1"
+        }
+      },
+      {
         "package": "MongoDriver",
         "repositoryURL": "https://github.com/vapor/mongo-driver.git",
         "state": {
@@ -236,15 +245,6 @@
         }
       },
       {
-        "package": "SQLite",
-        "repositoryURL": "https://github.com/vapor/sqlite.git",
-        "state": {
-          "branch": null,
-          "revision": "9aceb6a0d7b1698a557647493bd78b030dad468b",
-          "version": "2.3.1"
-        }
-      },
-      {
         "package": "Schrodinger",
         "repositoryURL": "https://github.com/OpenKitten/Schrodinger.git",
         "state": {
@@ -260,6 +260,15 @@
           "branch": null,
           "revision": "f6b06982e94db71227e99c56fec5899a8526e8ad",
           "version": "2.1.0"
+        }
+      },
+      {
+        "package": "SQLite",
+        "repositoryURL": "https://github.com/vapor/sqlite.git",
+        "state": {
+          "branch": null,
+          "revision": "9aceb6a0d7b1698a557647493bd78b030dad468b",
+          "version": "2.3.1"
         }
       },
       {

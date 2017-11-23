@@ -2,6 +2,7 @@ import Vapor
 import AuthProvider
 import JWTProvider
 import JWT
+import Foundation
 
 extension Droplet {
     private var userController: UserController {
@@ -50,7 +51,14 @@ extension Droplet {
             
             guard let signers = self.signers else { throw Abort.serverError }
             let signerKeys = signers.map({ $0.key })
-            let signerKey = signerKeys[Int(arc4random()) % signerKeys.count]
+            
+            #if os(Linux)
+                let signerIndex = Int(random() % signerKeys.count)
+            #else
+                let signerIndex = Int(arc4random()) % signerKeys.count
+            #endif
+            
+            let signerKey = signerKeys[signerIndex]
             guard let signer = signers[signerKey] else { throw Abort.serverError }
             
             let jwt = try JWT(additionalHeaders: ["kid": .string(signerKey)], payload: try token.makeJSON(), signer: signer)

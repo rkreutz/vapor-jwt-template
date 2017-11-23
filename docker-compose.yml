@@ -1,0 +1,19 @@
+version: "2.2"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: ./
+    ports:
+      - "8080:8080"
+    volumes:
+      - "$PWD:/vapor"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ../data/db:/data/db
+    ports:
+      - "127.0.0.1:27017:27017"
