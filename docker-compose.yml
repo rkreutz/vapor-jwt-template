@@ -5,8 +5,10 @@ services:
     image: nginx
     ports:
       - "8080:80"
+      - "8443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - $PWD/nginx.conf:/etc/nginx/conf.d/default.conf
+      - $PWD:/etc/nginx/certs
     links:
       - app
     restart: always
